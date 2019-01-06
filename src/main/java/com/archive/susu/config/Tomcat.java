@@ -18,7 +18,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableAsync
-public class Application extends SpringBootServletInitializer {
+public class Tomcat extends SpringBootServletInitializer {
 
 	@Value("${server.http.port}")
 	private int httpPort;
@@ -29,24 +29,13 @@ public class Application extends SpringBootServletInitializer {
 	@Value("${server.https.enable}")
 	private boolean httpsEnable;
 
-	private static Class<Application> applicationClass = Application.class;
-
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+	private static Class<Tomcat> applicationClass = Tomcat.class;
 
     @Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(applicationClass);
 	}
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setDefaultEncoding(CommonConstant.CHARSET_UTF8);
-        messageSource.setBasenames("classpath:i18n/messages", "classpath:i18n/app" , "classpath:i18n/validation");
-        messageSource.setCacheSeconds(36000);
-        return messageSource;
-    }
+
 	@Bean
 	public ServletWebServerFactory servletContainer() {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
