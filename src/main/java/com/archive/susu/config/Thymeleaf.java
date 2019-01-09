@@ -3,34 +3,34 @@
  */
 package com.archive.susu.config;
 
-import com.archive.susu.constant.CommonConstant;
+import com.archive.susu.web.conversion.DateFormatter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
+/**
+ * WebMvcConfigurer thay the WebMvcConfigurerAdapter
+ * vi trong Interface dac co phuong thuc addFormatters...
+ */
 @Configuration
 @EnableWebMvc
-public class Thymeleaf extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+public class Thymeleaf implements WebMvcConfigurer, ApplicationContextAware {
 
     @Value("${spring.thymeleaf.cache}")
     private boolean thymeleafCache;
 
     private ApplicationContext applicationContext;
-
-    public Thymeleaf() {
-        super();
-    }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -80,5 +80,31 @@ public class Thymeleaf extends WebMvcConfigurerAdapter implements ApplicationCon
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
     }
+
+    /* ******************************************************************* */
+    /*  GENERAL CONFIGURATION ARTIFACTS                                    */
+    /*  Static Resources, i18n Messages, Formatters (Conversion Service)   */
+    /* ******************************************************************* */
+
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/assets/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/assets/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/assets/js/**").addResourceLocations("/js/");
+    }
+
+    /**
+     * Override tu interface WebMvcConfigurer
+     */
+    @Override
+    public void addFormatters(final FormatterRegistry registry) {
+        registry.addFormatter(dateFormatter());
+    }
+
+    @Bean
+    public DateFormatter dateFormatter() {
+        return new DateFormatter();
+    }
+
 
 }

@@ -1,23 +1,21 @@
 package com.archive.susu.config;
 
-import com.archive.susu.constant.CommonConstant;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@EnableAsync
+/**
+ * TODO: muon deploy on server Tomcat
+ * Ref: https://o7planning.org/vi/11903/trien-khai-ung-dung-spring-boot-tren-tomcat-server
+ */
+@Configuration
 public class Tomcat extends SpringBootServletInitializer {
 
 	@Value("${server.http.port}")

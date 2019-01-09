@@ -17,9 +17,7 @@ public class Messages {
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setDefaultEncoding(CommonConstant.CHARSET_UTF8);
-        messageSource.setBasenames("classpath:i18n/messages",
-                "classpath:i18n/app" ,
-                "classpath:i18n/validation");
+        messageSource.setBasenames("classpath:i18n/messages");
         messageSource.setCacheSeconds(36000);
         return messageSource;
     }
