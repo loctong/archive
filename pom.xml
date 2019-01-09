@@ -11,7 +11,7 @@
     <groupId>com.archive</groupId>
     <artifactId>susu</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>susu</name>
+    <name>SuSu</name>
     <description></description>
     <packaging>war</packaging>
 
