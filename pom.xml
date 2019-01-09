@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>susu</name>
     <description></description>
+    <packaging>war</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,6 +35,13 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!--de deploy len tomcat-->
+        <!--https://o7planning.org/vi/11903/trien-khai-ung-dung-spring-boot-tren-tomcat-server-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--<scope>provided</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
