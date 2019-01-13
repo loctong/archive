@@ -88,9 +88,9 @@ public class Thymeleaf implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/assets/images/**").addResourceLocations("/images/");
-        registry.addResourceHandler("/assets/css/**").addResourceLocations("/css/");
-        registry.addResourceHandler("/assets/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/assets/images/**").addResourceLocations("/assets/images/");
+        registry.addResourceHandler("/assets/css/**").addResourceLocations("/assets/css/");
+        registry.addResourceHandler("/assets/js/**").addResourceLocations("/assets/js/");
     }
 
     /**
