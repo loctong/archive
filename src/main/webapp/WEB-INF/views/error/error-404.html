@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <title>Error page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" media="screen"
+          th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="screen"
+          th:href="@{/resources/css/core.css}"/>
+</head>
 <body>
-<h1>Something went wrong! </h1>
-<h2>Our Engineers are on it</h2>
-<a href="/">Go Home</a>
-404
+<div class="container">
+    <!--<div th:replace="fragments/alert :: alert (type='danger', message=${errorMessage})">Error: Error</div>-->
+    <h1>Format ISO</h1>
+    <p th:text="${#dates.formatISO(standardDate)}"></p>
+    <p th:text="${#temporals.formatISO(localDateTime)}"></p>
+    <p th:text="${#temporals.formatISO(localDate)}"></p>
+    <p th:text="${#temporals.formatISO(timestamp)}"></p>
+    <div th:include="fragments/footer :: footer">&copy; 2017 The Static Templates</div>
+</div>
 </body>
 </html>

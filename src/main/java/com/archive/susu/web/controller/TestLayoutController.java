@@ -1,4 +1,4 @@
-package com.archive.susu.controller;
+package com.archive.susu.web.controller;
 
 import com.archive.susu.constant.PageUrl;
 import org.springframework.stereotype.Controller;
