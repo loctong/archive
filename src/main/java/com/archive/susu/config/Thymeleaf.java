@@ -6,6 +6,8 @@ package com.archive.susu.config;
 import com.archive.susu.web.conversion.DateFormatter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +27,7 @@ import org.thymeleaf.templatemode.TemplateMode;
  */
 @Configuration
 @EnableWebMvc
+@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 public class Thymeleaf implements WebMvcConfigurer, ApplicationContextAware {
 
     @Value("${spring.thymeleaf.cache}")
