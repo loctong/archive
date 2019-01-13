@@ -32,6 +32,9 @@ public class Thymeleaf implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
+    private static final String RESOURCES_LOCATION = "/resources/";
+    private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
@@ -88,15 +91,7 @@ public class Thymeleaf implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        /**
-         * TODO: Cach su dung
-         * href="../../css/stsm.css" (vi tri dang dung cua html ra root roi ap dung mapping ben duoi)
-         * con dung tag th cua template vo thang luon ko can mapping nay
-         * th:href="@{/assets/css/stsm.css}"
-         */
-        registry.addResourceHandler("/assets/images/**").addResourceLocations("/images/");
-        registry.addResourceHandler("/assets/css/**").addResourceLocations("/css/");
-        registry.addResourceHandler("/assets/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
 
     }
 
